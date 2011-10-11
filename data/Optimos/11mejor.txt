@@ -1,0 +1,9 @@
+Se generaron 3628800.000000 ciclos Hamiltonianos
+
+
+Grafica con 11 vertices
+Longitud promedio de ciclos Hamiltonianos: 2872.000000
+
+longitud del ciclo minimo: 1225	Ciclo minimo:  0   3   4   8   5   7  10   9   1   6   2   0
+
+longitud del ciclo maximo: 4854	Ciclo maximo:  0   9   6   7   8   1  10   3   2   5   4   0

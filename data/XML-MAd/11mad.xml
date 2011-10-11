@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE Matriz SYSTEM "matriz.dtd">
+<Matriz renglones="11" columnas="11" omision="0" tipo="SIM">
+   <renglon indice="1">
+      <columna indice="0">285</columna>
+   </renglon>
+   <renglon indice="2">
+      <columna indice="0">130</columna>
+      <columna indice="1">462</columna>
+   </renglon>
+   <renglon indice="3">
+      <columna indice="0">162</columna>
+      <columna indice="1">323</columna>
+      <columna indice="2">373</columna>
+   </renglon>
+   <renglon indice="4">
+      <columna indice="0">487</columna>
+      <columna indice="1">348</columna>
+      <columna indice="2">307</columna>
+      <columna indice="3">87</columna>
+   </renglon>
+   <renglon indice="5">
+      <columna indice="0">156</columna>
+      <columna indice="1">325</columna>
+      <columna indice="2">380</columna>
+      <columna indice="3">38</columna>
+      <columna indice="4">405</columna>
+   </renglon>
+   <renglon indice="6">
+      <columna indice="0">397</columna>
+      <columna indice="1">172</columna>
+      <columna indice="2">156</columna>
+      <columna indice="3">118</columna>
+      <columna indice="4">342</columna>
+      <columna indice="5">107</columna>
+   </renglon>
+   <renglon indice="7">
+      <columna indice="0">277</columna>
+      <columna indice="1">260</columna>
+      <columna indice="2">355</columna>
+      <columna indice="3">298</columna>
+      <columna indice="4">443</columna>
+      <columna indice="5">49</columna>
+      <columna indice="6">487</columna>
+   </renglon>
+   <renglon indice="8">
+      <columna indice="0">362</columna>
+      <columna indice="1">439</columna>
+      <columna indice="2">409</columna>
+      <columna indice="3">110</columna>
+      <columna indice="4">95</columna>
+      <columna indice="5">5</columna>
+      <columna indice="6">93</columna>
+      <columna indice="7">495</columna>
+   </renglon>
+   <renglon indice="9">
+      <columna indice="0">498</columna>
+      <columna indice="1">16</columna>
+      <columna indice="2">135</columna>
+      <columna indice="3">84</columna>
+      <columna indice="4">136</columna>
+      <columna indice="5">148</columna>
+      <columna indice="6">308</columna>
+      <columna indice="7">85</columna>
+      <columna indice="8">133</columna>
+   </renglon>
+   <renglon indice="10">
+      <columna indice="0">299</columna>
+      <columna indice="1">490</columna>
+      <columna indice="2">409</columna>
+      <columna indice="3">492</columna>
+      <columna indice="4">276</columna>
+      <columna indice="5">252</columna>
+      <columna indice="6">353</columna>
+      <columna indice="7">277</columna>
+      <columna indice="8">156</columna>
+      <columna indice="9">76</columna>
+   </renglon>
+</Matriz>

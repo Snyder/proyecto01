@@ -1,0 +1,11 @@
+Nombre del archivo con la matriz de adyacencia: MADS/09mad
+Nombre del archivo con los tours: HAMS/09ham
+Se leyeron 40320 ciclos
+
+
+Grafica con 9 vertices
+Longitud promedio de ciclos Hamiltonianos: 503.500000
+
+longitud del ciclo minimo: 321	Ciclo minimo:  0   8   7   3   6   4   1   5   2   0
+
+longitud del ciclo maximo: 692	Ciclo maximo:  0   5   6   7   4   2   3   8   1   0

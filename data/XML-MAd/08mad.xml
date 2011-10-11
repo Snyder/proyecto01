@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE Matriz SYSTEM "matriz.dtd">
+<Matriz renglones="8" columnas="8" omision="0" tipo="SIM">
+   <renglon indice="1">
+	<columna indice="0">6</columna>
+   </renglon>
+   <renglon indice="2">
+	<columna indice="0">140</columna>
+	<columna indice="1">171</columna>
+   </renglon>
+   <renglon indice="3">
+	<columna indice="0">63</columna>
+	<columna indice="1">124</columna>
+	<columna indice="2">88</columna>
+   </renglon>
+   <renglon indice="4">
+	<columna indice="0">79</columna>
+	<columna indice="1">199</columna>
+	<columna indice="2">65</columna>
+	<columna indice="3">15</columna>
+   </renglon>
+   <renglon indice="5">
+	<columna indice="0">158</columna>
+	<columna indice="1">159</columna>
+	<columna indice="2">57</columna>
+	<columna indice="3">5</columna>
+	<columna indice="4">110</columna>
+   </renglon>
+   <renglon indice="6">
+	<columna indice="0">166</columna>
+	<columna indice="1">191</columna>
+	<columna indice="2">109</columna>
+	<columna indice="3">5</columna>
+	<columna indice="4">183</columna>
+	<columna indice="5">102</columna>
+   </renglon>
+   <renglon indice="7">
+	<columna indice="0">183</columna>
+	<columna indice="1">77</columna>
+	<columna indice="2">99</columna>
+	<columna indice="3">11</columna>
+	<columna indice="4">143</columna>
+	<columna indice="5">119</columna>
+	<columna indice="6">19</columna>
+   </renglon>
+</Matriz>

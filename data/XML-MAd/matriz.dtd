@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+========================================================================
+matriz.dtd
+
+Definición del tipo de documento matriz.
+
+Copyright (C) 2003  José Galaviz,
+Facultad de Ciencias, Universidad Nacional Autónoma de México, Mexico.
+========================================================================
+-->
+
+<!--
+Una matriz está constituida por:
+1) Uno o más renglones numerados que contienen
+   1.1) Una o más columnas numeradas.
+
+Adicionalmente una matriz posee atributos:
+a) Un valor opcional por omisión para aquellas entradas de la matriz no especificadas.
+b) Un número total de renglones.
+c) Un número total de columnas.
+d) Una especificación opcional del tipo de matriz (triangular inferior o
+   superior, con o sin diagonal, simétrica o regular).
+-->
+
+<!--
+Una matriz es una secuencia de al menos un renglón.
+Posee 4 atributos:
+el número de renglones,
+el número de columnas
+el valor (opcional) por omisión
+el tipo de matriz (opcional)
+-->
+<!ELEMENT Matriz (renglon+)>
+<!ATTLIST Matriz renglones CDATA #REQUIRED>
+<!ATTLIST Matriz columnas  CDATA #REQUIRED>
+<!ATTLIST Matriz omision   CDATA "0">
+<!ATTLIST Matriz tipo      (TRSD|TRSN|TRID|TRIN|SIM|REGULAR) "REGULAR">
+
+<!--
+Un renglón es una secuencia de una o más columnas
+y tiene un atributo que especifica el índice del renglón
+-->
+<!ELEMENT renglon (columna)+>
+<!ATTLIST renglon indice CDATA #REQUIRED>
+
+<!--
+Una columna es un valor de la entrada en esa posición
+y tiene como atributo el índice de la columna
+-->
+<!ELEMENT columna (#PCDATA)>
+<!ATTLIST columna indice CDATA #REQUIRED>
+
+<!-- matriz.dtd termina aquí -->
+
+<!--
+Ejemplo:
+==================== archivo debajo de esta línea  ====================
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE Matriz SYSTEM "matriz.dtd">
+<Matriz renglones="3" columnas="3" omision="0" tipo="TRID">
+   <renglon indice="0">
+      <columna indice="0">1</columna>
+   </renglon>
+
+   <renglon indice="1">
+      <columna indice="0">3.5</columna>
+      <columna indice="1">1</columna>
+   </renglon>
+
+   <renglon indice="2">
+      <columna indice="0">2.3</columna>
+      <columna indice="1">6.4</columna>
+      <columna indice="2">1</columna>
+   </renglon>
+
+</Matriz>
+==================== archivo arriba de esta línea ====================
+-->
