@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class AgenteViajero {
 
     private int nVert;
-    private final Matriz pesos;
+    //private final Matriz pesos;
     private long pesoMin;
     private LinkedList<Integer> rutaMin;
     private String permutaciones;

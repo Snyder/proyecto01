@@ -37,18 +37,20 @@ public class Permutaciones {
         }
     }
 
+    public void creaPermutaciones(int nVertices) {
+        LinkedList<Integer> vertices = new LinkedList<Integer>();
+        for (int i = 1; i < nVertices; i++) {
+            vertices.add(i);
+        }
+        this.permuta("", vertices);
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LinkedList<Integer> caracteres = new LinkedList<Integer>();
-        caracteres.add(1);
-        caracteres.add(2);
-        caracteres.add(3);
-        caracteres.add(4);
-        caracteres.add(5);
         Permutaciones p = new Permutaciones();
-        p.permuta("", caracteres);
+        p.creaPermutaciones(6);
         System.out.println(p.permutaciones);
 
     }
