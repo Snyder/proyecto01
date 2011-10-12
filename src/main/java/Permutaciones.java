@@ -8,29 +8,31 @@ import java.util.LinkedList;
  */
 public class Permutaciones {
 
-    private LinkedList<String> permutaciones;
+    private String permutaciones;
 
     /**
      * Constructor
      */
     public Permutaciones() {
-        this.permutaciones = new LinkedList<String>();
+        this.permutaciones = "";
+    }
+
+    public String getPermutaciones() {
+        return this.permutaciones;
     }
 
     /**
-     * Funci&acuteon que obtiene las permutaciones de la lista.
+     * Funcion que obtiene las permutaciones de la lista.
      * @param acumulada cadena de caracteres acumulados.
      * @param sobrantes caracteres a permutar.
      */
     public void permuta(String acumulada, LinkedList<Character> sobrantes) {
         if (sobrantes.size() == 1) {
-            this.permutaciones.add(acumulada + sobrantes.get(0));
-
-            System.out.println(acumulada + sobrantes.get(0));
+            this.permutaciones += acumulada + sobrantes.get(0) + ",";
         }
         for (int i = 0; i < sobrantes.size(); i++) {
             Character sig = sobrantes.remove(i);
-            permuta(acumulada + sig, sobrantes);
+            permuta(acumulada + sig + ",", sobrantes);
             sobrantes.add(i, sig);
         }
     }
@@ -47,5 +49,7 @@ public class Permutaciones {
         caracteres.add('5');
         Permutaciones p = new Permutaciones();
         p.permuta("", caracteres);
+        System.out.println(p.permutaciones);
+
     }
 }
