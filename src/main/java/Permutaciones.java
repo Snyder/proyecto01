@@ -26,14 +26,14 @@ public class Permutaciones {
      * @param acumulada cadena de caracteres acumulados.
      * @param sobrantes caracteres a permutar.
      */
-    public void permuta(String acumulada, LinkedList<Character> sobrantes) {
-        if (sobrantes.size() == 1) {
-            this.permutaciones += acumulada + sobrantes.get(0) + ",";
+    public void permuta(String acumulada, LinkedList<Integer> vertices) {
+        if (vertices.size() == 1) {
+            this.permutaciones += acumulada + vertices.get(0) + ",";
         }
-        for (int i = 0; i < sobrantes.size(); i++) {
-            Character sig = sobrantes.remove(i);
-            permuta(acumulada + sig + ",", sobrantes);
-            sobrantes.add(i, sig);
+        for (int i = 0; i < vertices.size(); i++) {
+            Integer sig = vertices.remove(i);
+            permuta(acumulada + sig + ",", vertices);
+            vertices.add(i, sig);
         }
     }
 
@@ -41,12 +41,12 @@ public class Permutaciones {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LinkedList<Character> caracteres = new LinkedList<Character>();
-        caracteres.add('1');
-        caracteres.add('2');
-        caracteres.add('3');
-        caracteres.add('4');
-        caracteres.add('5');
+        LinkedList<Integer> caracteres = new LinkedList<Integer>();
+        caracteres.add(0);
+        caracteres.add(1);
+        caracteres.add(2);
+        caracteres.add(3);
+        caracteres.add(4);
         Permutaciones p = new Permutaciones();
         p.permuta("", caracteres);
         System.out.println(p.permutaciones);
