@@ -42,11 +42,11 @@ public class Permutaciones {
      */
     public static void main(String[] args) {
         LinkedList<Integer> caracteres = new LinkedList<Integer>();
-        caracteres.add(0);
         caracteres.add(1);
         caracteres.add(2);
         caracteres.add(3);
         caracteres.add(4);
+        caracteres.add(5);
         Permutaciones p = new Permutaciones();
         p.permuta("", caracteres);
         System.out.println(p.permutaciones);
