@@ -8,10 +8,12 @@ import java.util.ListIterator;
 
 
 /**
- * Describe class AgenteViajero here.
- *
- * @author <a href="mailto:snyder@ciencias.unam.mx">Snyder</a>
- * @version 1.0
+ * <code>AgenteViajero</code> es la representacion abstracta del problema del TSP,
+ * leemos de una matriz simetricas (matriz de adyacencias con pesos), conforme los lineamientos
+ * del dtd de la practica pasada.
+ * Para minimizar el gasto de memoria utilizamos backtracking, con condiciones para reducir los
+ * casos a verificar, que es con el atributo de la ruta minima "rutaMin", vamos comparando, 
+ * para asi solo revisar los posibles caminos de peso menor al que tenemos.
  */
 public class AgenteViajero {
 
@@ -45,7 +47,6 @@ public class AgenteViajero {
                     lector.siguienteEntrada();
                 }
             }
-            pesos.despliega();
         } catch (IndexOutOfBoundsException exio) {
             exio.printStackTrace();
             System.err.println("Se salió");
@@ -54,14 +55,17 @@ public class AgenteViajero {
         }
     }
 
+    /**
+    * <code>creaCamino</code> es el metodo principal, esencialmente usamos
+    * backtracking, con la condicion de que el camino que sa va construyendo es
+    * menor al que tenemos como min.
+    */
     public void creaCamino (String actuales) {
         String[] indices = actuales.split(",");
         double pesoActual = this.calculaPeso(indices);
         if ((indices.length >= this.nVert - 1) || pesoActual > this.pesoMin) {
             if (indices.length == this.nVert - 1) {
                 if (pesoActual < this.pesoMin) {
-                    System.out.println("cambio de pivote" + pesoActual );
-
                     this.rutaMin = actuales;
                     this.pesoMin = pesoActual;
                 }
@@ -76,6 +80,13 @@ public class AgenteViajero {
         }
     }
 
+    /**
+    * <code>calculaPeso</code> hace eso, calcular el costo del viaje.
+    * Para ello, verifica que haya camino al cual calcularle el costo.
+    * Si es vacio, termina, si no, lo revisa y busca el peso en la matriz.
+    * @param indices El camino.
+    * @return el costo del viaje.
+    */
     public double calculaPeso(String[] indices) {
         double res = 0;
         if (indices[0] == "") {
@@ -93,21 +104,35 @@ public class AgenteViajero {
         return res;
     }
 
+    /**
+    * <code>creaPivote</code> genera un primer camino con el cual comparar y 
+    * reducir el numero de casos a revisar. El camino es recorrerlo del 0 al n
+    * donde "n" es el vertice final y regresar al cero.
+    */
     public void creaPivote() {
         for (int i = 0; i < nVert - 1; i++) {
             this.pesoMin += this.pesos.getEntrada(i, i+1);
         }
         this.pesoMin += this.pesos.getEntrada(this.nVert - 2, this.nVert - 1);
         this.pesoMin += this.pesos.getEntrada(this.nVert - 1, 0);
-        System.out.println("el pivote vale: " + this.pesoMin);
+        System.out.println("El pivote vale: " + this.pesoMin);
     }
 
+    /**
+    * Metodo main, sirve para ejecutar nuestro programa. Construe un
+    * objeto de tipo <code>AgenteViajero</code> con la ruta del archivo
+    * del que queremos leer, creamos un pivote, y ejecutamos el metodo principal.
+    */
     public static void main(String[] args) {
-        AgenteViajero test = new AgenteViajero("data/XML-MAd/12mad.xml");
+    	if(args.length == 0) {
+    	    System.err.println("Argumento invalido.");
+    	    System.exit(1);
+    	}
+        AgenteViajero test = new AgenteViajero(args[0]);
         test.creaPivote();
         test.creaCamino("");
-        System.out.println(test.pesoMin);
-        System.out.println(test.rutaMin);
+        System.out.println("El costo minimo del viaje es = " + test.pesoMin);
+        System.out.println("La ruta que lo consigue es :\t" + test.rutaMin);
 
     }
 
