@@ -13,10 +13,21 @@ import EstDat.MatrizPolinomio;
  * tenemos.
  */
 public class AgenteViajero {
-
+    /**
+     * Variable usada para almacenar el número de vértices de la gráfica actual.
+     */
     private int nVert;
+    /**
+     * Variable usada para almacenar los pesos de la matriz.
+     */
     private Matriz pesos = null;
+    /**
+     * Variable que se usa para almacenar el peso mínimo encontrado.
+     */
     private double pesoMin = 0;
+    /**
+     * Cadena usada para escribir la ruta mínima actual.
+     */
     private String rutaMin;
 
     /**
