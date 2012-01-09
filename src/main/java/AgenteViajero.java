@@ -1,5 +1,5 @@
-import EstDat.Matriz;
 import EstDat.LectorMatrizXML;
+import EstDat.Matriz;
 import EstDat.MatrizPolinomio;
 
 
@@ -39,17 +39,17 @@ public class AgenteViajero {
      *
      */
     public AgenteViajero(final String rutaArchivo) {
-        this.rutaMin = null;
-        this.pesoMin = 0;
+        rutaMin = null;
+        pesoMin = 0;
         try {
             LectorMatrizXML lector = new LectorMatrizXML(rutaArchivo);
-            this.nVert = lector.getRenglones();
-            this.pesos = new MatrizPolinomio(
-                       lector.getRenglones(), lector.getColumnas(),
-                       lector.getDefault(), lector.getTipo());
+            nVert = lector.getRenglones();
+            pesos = new MatrizPolinomio(
+                    lector.getRenglones(), lector.getColumnas(),
+                    lector.getDefault(), lector.getTipo());
             for (int i = 0; i < lector.getEntradas(); i++) {
                 pesos.setEntrada(lector.getRenglon(),
-                                      lector.getColumna(), lector.getEntrada());
+                        lector.getColumna(), lector.getEntrada());
                 if (lector.haySiguiente()) {
                     lector.siguienteEntrada();
                 }
@@ -62,25 +62,25 @@ public class AgenteViajero {
         }
     }
 
-   /**
-    * <code>creaCamino</code> es el método principal, esencialmente usamos
-    * backtracking, con la condición de que el camino que se va construyendo es
-    * menor al que tenemos como mínimo.
-    * @param actuales la cadena que se va formando para el camino actual
-    */
+    /**
+     * <code>creaCamino</code> es el método principal, esencialmente usamos
+     * backtracking, con la condición de que el camino que se va construyendo es
+     * menor al que tenemos como mínimo.
+     * @param actuales la cadena que se va formando para el camino actual
+     */
     public final void creaCamino(final String actuales) {
         String[] indices = actuales.split(",");
-        double pesoActual = this.calculaPeso(indices);
-        if ((indices.length >= this.nVert - 1) || pesoActual > this.pesoMin) {
-            if (indices.length == this.nVert - 1) {
-                if (pesoActual < this.pesoMin) {
-                    this.rutaMin = actuales;
-                    this.pesoMin = pesoActual;
+        double pesoActual = calculaPeso(indices);
+        if ((indices.length >= (nVert - 1)) || (pesoActual > pesoMin)) {
+            if (indices.length == (nVert - 1)) {
+                if (pesoActual < pesoMin) {
+                    rutaMin = actuales;
+                    pesoMin = pesoActual;
                 }
             }
             return;
         }
-        for (int i = 1; i < this.nVert; i++) {
+        for (int i = 1; i < nVert; i++) {
             if (actuales.indexOf(Integer.toString(i)) >= 0) {
                 continue;
             }
@@ -89,50 +89,50 @@ public class AgenteViajero {
     }
 
     /**
-    * <code>calculaPeso</code> hace eso, calcular el costo del viaje.
-    * Para ello, verifica que haya camino al cual calcularle el costo.
-    * Si es vacío, termina, si no, lo revisa y busca el peso en la matriz.
-    * @param indices El camino.
-    * @return el costo del viaje.
-    */
+     * <code>calculaPeso</code> hace eso, calcular el costo del viaje.
+     * Para ello, verifica que haya camino al cual calcularle el costo.
+     * Si es vacío, termina, si no, lo revisa y busca el peso en la matriz.
+     * @param indices El camino.
+     * @return el costo del viaje.
+     */
     public final double calculaPeso(final String[] indices) {
         double res = 0;
         if (indices[0] == "") {
             return 0;
         }
-        res += this.pesos.getEntrada(0, Integer.parseInt(indices[0]));
+        res += pesos.getEntrada(0, Integer.parseInt(indices[0]));
         for (int i = 0; i < indices.length; i++) {
             if ((i + 1) == indices.length) {
-                res += this.pesos.getEntrada(Integer.parseInt(indices[i]), 0);
+                res += pesos.getEntrada(Integer.parseInt(indices[i]), 0);
                 continue;
             }
-            res += this.pesos.getEntrada(Integer.parseInt(indices[i]),
-                                         Integer.parseInt(indices[i + 1]));
+            res += pesos.getEntrada(Integer.parseInt(indices[i]),
+                    Integer.parseInt(indices[i + 1]));
         }
         return res;
     }
 
     /**
-    * <code>creaPivote</code> genera un primer camino con el cual comparar y
-    * reducir el numero de casos a revisar. El camino es recorrerlo del 0 al n
-    * donde "n" es el vértice final y regresar al cero.
-    */
+     * <code>creaPivote</code> genera un primer camino con el cual comparar y
+     * reducir el numero de casos a revisar. El camino es recorrerlo del 0 al n
+     * donde "n" es el vértice final y regresar al cero.
+     */
     public final void creaPivote() {
-        for (int i = 0; i < nVert - 1; i++) {
-            this.pesoMin += this.pesos.getEntrada(i, i + 1);
+        for (int i = 0; i < (nVert - 1); i++) {
+            pesoMin += pesos.getEntrada(i, i + 1);
         }
-        this.pesoMin += this.pesos.getEntrada(this.nVert - 2, this.nVert - 1);
-        this.pesoMin += this.pesos.getEntrada(this.nVert - 1, 0);
-        System.out.println("El pivote vale: " + this.pesoMin);
+        pesoMin += pesos.getEntrada(nVert - 2, nVert - 1);
+        pesoMin += pesos.getEntrada(nVert - 1, 0);
+        System.out.println("El pivote vale: " + pesoMin);
     }
 
     /**
-    * Método main, sirve para ejecutar nuestro programa. Construye un
-    * objeto de tipo <code>AgenteViajero</code> con la ruta del archivo
-    * del que queremos leer, creamos un pivote, y ejecutamos el método
-    * principal.
-    * @param args una descripción genérica
-    */
+     * Método main, sirve para ejecutar nuestro programa. Construye un
+     * objeto de tipo <code>AgenteViajero</code> con la ruta del archivo
+     * del que queremos leer, creamos un pivote, y ejecutamos el método
+     * principal.
+     * @param args una descripción genérica
+     */
     public static void main(final String[] args) {
         if (args.length == 0) {
             System.err.println("Argumento invalido.");
